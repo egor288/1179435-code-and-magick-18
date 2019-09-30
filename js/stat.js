@@ -1,24 +1,33 @@
 "use strict";
 
 window.renderStatistics = function(ctx, names, times) {
-  var height;
+  var heightOfGekstogram;
   var color;
   var i;
-  var x = 150;
+  var xOfBar = 150;
+  var WINDOWWIGHT = 420;
+  var WINDOWHIGHT = 270;
+  var PAINTINGX = 100;
+  var PAINTINGY = 10;
+  var TEXTX = 150;
+  var TEXTY = 20;
+  var EMTSPACEWIGHT = 90;
+  var GROUNDOFBAR = 250;
+  var GEKSTOGRAMHEIGHT = 40;
 
   ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
-  ctx.fillRect(110, 20, 420, 270);
+  ctx.fillRect(PAINTINGX + 10, PAINTINGY + 10, WINDOWWIGHT, WINDOWHIGHT);
   ctx.fillStyle = "#fff";
-  ctx.fillRect(100, 10, 420, 270);
+  ctx.fillRect(PAINTINGX, PAINTINGY, WINDOWWIGHT, WINDOWHIGHT);
   ctx.fillStyle = "#000";
   ctx.font = " 16px PT Mono";
   ctx.textBaseline = "hanging";
-  ctx.fillText("Ура вы победили!", 150, 20);
-  ctx.fillText("Список результатов:", 150, 40);
+  ctx.fillText("Ура вы победили!", TEXTX, TEXTY);
+  ctx.fillText("Список результатов:", TEXTX, TEXTY + 20);
   var maxTime = Math.max.apply(null, times);
 
   for (i = 0; i < times.length; i++) {
-    var height = Math.round((times[i] * 150) / maxTime);
+    var heightOfGekstogram = Math.round((times[i] * 150) / maxTime);
     var saturation = Math.round(Math.random() * 100) + "%";
 
     if (names[i] === "Вы") {
@@ -28,13 +37,21 @@ window.renderStatistics = function(ctx, names, times) {
     }
 
     ctx.fillStyle = color;
-    ctx.fillRect(x, 250 - height, 40, height);
-    x = x + 90;
+    ctx.fillRect(
+      xOfBar,
+      GROUNDOFBAR - heightOfGekstogram,
+      GEKSTOGRAMHEIGHT,
+      heightOfGekstogram
+    );
+    xOfBar = xOfBar + EMTSPACEWIGHT;
     ctx.fillStyle = "#000";
     ctx.textBaseline = "alphabetic";
-    ctx.fillText(Math.round(times[i]), x - 90, 250 - height - 10);
+    ctx.fillText(
+      Math.round(times[i]),
+      xOfBar - EMTSPACEWIGHT,
+      GROUNDOFBAR - heightOfGekstogram - 10
+    );
     ctx.textBaseline = "hanging";
-    ctx.fillText(names[i], x - 90, 260);
-    console.log(color);
+    ctx.fillText(names[i], xOfBar - EMTSPACEWIGHT, GROUNDOFBAR + 10);
   }
 };
