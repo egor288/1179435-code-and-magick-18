@@ -2,9 +2,9 @@
 
 window.renderStatistics = function(ctx, names, times) {
   var heightOfGekstogram;
-  var color;
+  var colorOfWizard;
   var i;
-  var xOfBar = 150;
+  var XOFBAR = 150;
   var WINDOWWIGHT = 420;
   var WINDOWHIGHT = 270;
   var PAINTINGX = 100;
@@ -31,27 +31,27 @@ window.renderStatistics = function(ctx, names, times) {
     var saturation = Math.round(Math.random() * 100) + "%";
 
     if (names[i] === "Вы") {
-      color = "rgba(255, 0, 0, 1)";
+      colorOfWizard = "rgba(255, 0, 0, 1)";
     } else {
-      color = "hsl(230," + saturation + ", 50%)";
+      colorOfWizard = "hsl(230," + saturation + ", 50%)";
     }
 
-    ctx.fillStyle = color;
+    ctx.fillStyle = colorOfWizard;
     ctx.fillRect(
-      xOfBar,
+      XOFBAR,
       GROUNDOFBAR - heightOfGekstogram,
       GEKSTOGRAMHEIGHT,
       heightOfGekstogram
     );
-    xOfBar = xOfBar + EMTSPACEWIGHT;
+    XOFBAR = XOFBAR + EMTSPACEWIGHT;
     ctx.fillStyle = "#000";
     ctx.textBaseline = "alphabetic";
     ctx.fillText(
       Math.round(times[i]),
-      xOfBar - EMTSPACEWIGHT,
+      XOFBAR - EMTSPACEWIGHT,
       GROUNDOFBAR - heightOfGekstogram - 10
     );
     ctx.textBaseline = "hanging";
-    ctx.fillText(names[i], xOfBar - EMTSPACEWIGHT, GROUNDOFBAR + 10);
+    ctx.fillText(names[i], XOFBAR - EMTSPACEWIGHT, GROUNDOFBAR + 10);
   }
 };
