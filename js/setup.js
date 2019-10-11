@@ -1,4 +1,5 @@
 'use strict';
+
 function getRandomInRange(max) {
   return Math.floor(Math.random() * (max + 1));
 }
@@ -14,10 +15,8 @@ function getPlayer() {
   player['coatColor'] = colors[getRandomInRange(colors.length - 1)];
 
   player['eyesColor'] = eyes[getRandomInRange(eyes.length - 1)];
-
   return player;
 }
-
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 var similarListElement = document.querySelector('.setup-similar-list');
@@ -58,12 +57,12 @@ var colors = [
 
 var eyes = ['black', 'red', 'blue', 'yellow', 'green'];
 
-
 var wizardsArray = [];
 
 for (var i = 0; i < 4; i++) {
   wizardsArray.push(getPlayer());
 }
+
 function renderWizard(wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
@@ -76,8 +75,8 @@ function renderWizard(wizard) {
 
 var fragment = document.createDocumentFragment();
 for (i = 0; i < wizardsArray.length; i++) {
+
   fragment.appendChild(renderWizard(wizardsArray[i]));
 }
 similarListElement.appendChild(fragment);
-
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
