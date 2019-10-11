@@ -1,4 +1,3 @@
-
 'use strict';
 
 function getRandomInRange(max) {
@@ -8,7 +7,6 @@ function getRandomInRange(max) {
 function getPlayer() {
   var player = {};
 
-
   player['name'] =
     names[getRandomInRange(names.length - 1)] +
     ' ' +
@@ -17,12 +15,8 @@ function getPlayer() {
   player['coatColor'] = colors[getRandomInRange(colors.length - 1)];
 
   player['eyesColor'] = eyes[getRandomInRange(eyes.length - 1)];
-
-
   return player;
 }
-
-
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 var similarListElement = document.querySelector('.setup-similar-list');
@@ -63,8 +57,6 @@ var colors = [
 
 var eyes = ['black', 'red', 'blue', 'yellow', 'green'];
 
-
-
 var wizardsArray = [];
 
 for (var i = 0; i < 4; i++) {
@@ -87,7 +79,4 @@ for (i = 0; i < wizardsArray.length; i++) {
   fragment.appendChild(renderWizard(wizardsArray[i]));
 }
 similarListElement.appendChild(fragment);
-
-
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
