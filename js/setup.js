@@ -173,5 +173,5 @@ wizardFireballElement.addEventListener('click', function () {
   var newColor = getRandomElement(playerFireballColor);
   this.style.background = newColor;
 });
-console.log(wizardElement);
+
 
