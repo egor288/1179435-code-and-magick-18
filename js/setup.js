@@ -6,7 +6,6 @@ var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 
-
 function getRandomInRange(max) {
   return Math.floor(Math.random() * (max + 1));
 }
@@ -82,7 +81,6 @@ function renderWizard(wizard) {
 
 var fragment = document.createDocumentFragment();
 for (i = 0; i < wizardsArray.length; i++) {
-
   fragment.appendChild(renderWizard(wizardsArray[i]));
 }
 similarListElement.appendChild(fragment);
@@ -124,7 +122,6 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-
 var playerCoatColors = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
@@ -157,21 +154,21 @@ var getRandomElement = function (array) {
 var wizardElement = document.querySelector('.setup-wizard');
 
 var wizardCoatElement = wizardElement.querySelector('.wizard-coat');
-wizardCoatElement.addEventListener('click', function () {
+wizardCoatElement.addEventListener('click', function (event) {
   var newColor = getRandomElement(playerCoatColors);
-  this.style.fill = newColor;
+  var target = event.target;
+  target.style.fill = newColor;
 });
 var wizardEyesElement = wizardElement.querySelector('.wizard-eyes');
-wizardEyesElement.addEventListener('click', function () {
+wizardEyesElement.addEventListener('click', function (event) {
   var newColor = getRandomElement(playerEyesColor);
-  this.style.fill = newColor;
+  var target = event.target;
+  target.style.fill = newColor;
 });
 
 var wizardFireballElement = document.querySelector('.setup-fireball-wrap');
 wizardFireballElement.addEventListener('click', function () {
-
   var newColor = getRandomElement(playerFireballColor);
-  this.style.background = newColor;
+
+  wizardFireballElement.style.background = newColor;
 });
-
-
